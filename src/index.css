@@ -1,1 +1,7 @@
 @import "tailwindcss";
+
+.navbartext{
+ font-family: "Bungee Shade", sans-serif;
+  font-weight: 900;
+  font-style: normal
+}
