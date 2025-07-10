@@ -20,13 +20,14 @@ function App() {
   };
 
   return (
-    <BrowserRouter >
+    <BrowserRouter  >
     
 
       <Sidebar isCollapsed={isCollapsed} toggleSidebar={toggleSidebar} />
        <Navbar />
      
-      <div className="min-h-screen bg-white dark:bg-gray-900 dark:text-gray-200">
+      <div className="min-h-screen  text-gray-200 bg-gradient-to-b from-gray-800 via-emerald-800 to-black
+">
         <main
           className="p-4"
           style={{
@@ -38,7 +39,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/favourite" element={<FavouriteSongs />} />
-            {/* <Route path="/playlist" element={<Playlist />} /> */}
+            <Route path="/playlist" element={<Playlist />} />
             <Route path="/album/:id" element={<AlbumDetails />} />
           </Routes>
         </main>

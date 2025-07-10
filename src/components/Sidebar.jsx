@@ -2,22 +2,25 @@
 import {
   faHouseUser,
   faCalendarCheck,
-  faBars,
+  faHeart,
+  faMusic,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { NavLink } from "react-router-dom";
 
 const Sidebar = ({ isCollapsed, toggleSidebar }) => {
   const navLinkClass = ({ isActive }) =>
-    `flex items-center flex-shrink-0 cursor-pointer rounded-lg px-2 py-4 m-1.5 text transition-colors duration-200 ${
-      isActive
-        ? "bg-blue-300 text-gray-900 font-semibold text-center"
-        : "text-gray-700 hover:bg-indigo-600 hover:text-gray-900"
+    `flex items-center flex-shrink-0 cursor-pointer rounded-lg px-2 py-4 m-1.5 tektur mb-8 text-xl ${
+    
+       isActive
+  ? "bg-gradient-to-l from-indigo-500 via-violet-500 to-pink-500 text-white font-semibold text-center"
+  : "bg-transparent hover:bg-gradient-to-r hover:from-indigo-500 hover:via-violet-500 hover:to-pink-500 text-white font-medium text-center"
+
     }`;
 
   return (
     <aside
-      className={`fixed left-0 z-40 transition-all duration-300 dark:bg-gray-800 bg-white shadow-lg`}
+      className={`fixed left-0 z-40 transition-all  duration-300 bg-gray-900 border-r-2 border-white`}
       style={{
         top: "6rem",
         height: "calc(100vh - 4rem)",
@@ -28,41 +31,41 @@ const Sidebar = ({ isCollapsed, toggleSidebar }) => {
       
       <button
         onClick={toggleSidebar}
-        className="flex items-center justify-center h-12 w-12 mt-4 mb-6 mx-auto p-5 rounded-lg text-gray-200 hover:bg-indigo-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+        className="flex items-center justify-center h-13 w-13 mt-4 mb-6 mx-auto p-5 rounded-lg text-gray-200 hover:bg-gradient-to-r hover:from-indigo-500  hover:via-violet-500 hover:to-pink-500 ,  "
         aria-label="Toggle sidebar"
       >
         <FontAwesomeIcon
-          icon={faBars}
-          className="text-2xl text-gray-700 dark:text-white"
+          icon={faMusic}
+          className="text-2xl  text-white"
         />
       </button>
 
-      <nav className="flex-1 overflow-y-auto px-2 pt-2">
-        <NavLink to="/" className={navLinkClass}>
+      <nav className="flex-1 overflow-y-auto px-2  pt-2">
+        <NavLink to="/" className={navLinkClass} >
           <FontAwesomeIcon
             icon={faHouseUser}
-            className="min-w-[1.5rem] dark:text-white"
+            className="min-w-[1.5rem]  text-white"
           />
-          {!isCollapsed && <span className="ml-3 dark:text-white">Home</span>}
+          {!isCollapsed && <span className="ml-3 text-white">Home</span>}
         </NavLink>
 
         <NavLink to="/favourite" className={navLinkClass}>
           <FontAwesomeIcon
-            icon={faCalendarCheck}
-            className="min-w-[1.5rem] dark:text-white"
+            icon={faHeart}
+            className="min-w-[1.5rem] text-white  "
           />
           {!isCollapsed && (
-            <span className="ml-3 dark:text-white">Favourite</span>
+            <span className="ml-3 text-white">Favourite</span>
           )}
         </NavLink>
 
          <NavLink to="/playlist" className={navLinkClass}>
           <FontAwesomeIcon
             icon={faCalendarCheck}
-            className="min-w-[1.5rem] dark:text-white"
+            className="min-w-[1.5rem] text-white"
           />
           {!isCollapsed && (
-            <span className="ml-3 dark:text-white">Playlists</span>
+            <span className="ml-3 text-white">Playlists</span>
           )}
         </NavLink>
       </nav>

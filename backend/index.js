@@ -337,16 +337,51 @@ app.listen(PORT, () => {
 });
 
 
-//magico playlist
-const getPlaylistTracks = async () => {
-  const res = await fetch(
-    "https://api.spotify.com/v1/playlists/3C7pjC45otsVI99viTziVS",
-    {
-      headers: {
-        Authorization: `Bearer YOUR_ACCESS_TOKEN`,
-      },
-    }
-  );
-  const data = await res.json();
-  console.log(data.tracks.items); // contains tracks
-};
+// //magico playlist
+// const getPlaylistTracks = async () => {
+//   const res = await fetch(
+//     "https://api.spotify.com/v1/playlists/3C7pjC45otsVI99viTziVS",
+//     {
+//       headers: {
+//         Authorization: `Bearer YOUR_ACCESS_TOKEN`,
+//       },
+//     }
+//   );
+//   const data = await res.json();
+//   console.log(data.tracks.items); // contains tracks
+// };
+
+
+app.get('/api/playlists/:id', async (req, res) => {
+  try {
+    const token = await getAccessToken();
+    const { id } = req.params;
+
+    const result = await axios.get(
+      `https://api.spotify.com/v1/playlists/${id}`,
+      { headers: { Authorization: `Bearer ${token}` } }
+    );
+
+    // Send just the array of tracks for easier front‑end use
+    res.json(result.data.tracks.items.map(i => i.track));
+  } catch (err) {
+    console.error('Playlist fetch error:', err.message);
+    res.status(500).json({ error: 'Failed to fetch playlist details' });
+  }
+});
+
+
+//artist
+app.get('/api/artist/:id/top-tracks', async (req, res) => {
+  try {
+    const token = await getAccessToken(); // your access token function
+    const result = await axios.get(`https://api.spotify.com/v1/artists/${req.params.id}/top-tracks`, {
+      headers: { Authorization: `Bearer ${token}` },
+      params: { market: 'IN' }, // Use appropriate market code
+    });
+    res.json(result.data.tracks);
+  } catch (err) {
+    console.error("Artist top tracks error:", err.message);
+    res.status(500).json({ error: "Failed to fetch artist's songs" });
+  }
+});
