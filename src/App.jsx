@@ -6,6 +6,7 @@ import Playlist from "./pages/Playlist";
 import Home from "./pages/Home";
 import FavouriteSongs from "./pages/FavoriteSongs";
 import AlbumDetails from "./pages/AlbumDetails";
+import Search from "./pages/Search";
 
 import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
@@ -41,6 +42,7 @@ function App() {
             <Route path="/favourite" element={<FavouriteSongs />} />
             <Route path="/playlist" element={<Playlist />} />
             <Route path="/album/:id" element={<AlbumDetails />} />
+               <Route path="/search" element={<Search />} />
           </Routes>
         </main>
       </div>

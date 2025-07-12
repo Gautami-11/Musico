@@ -68,6 +68,16 @@ const Sidebar = ({ isCollapsed, toggleSidebar }) => {
             <span className="ml-3 text-white">Playlists</span>
           )}
         </NavLink>
+
+          <NavLink to="/search" className={navLinkClass}>
+          <FontAwesomeIcon
+            icon={faCalendarCheck}
+            className="min-w-[1.5rem] text-white"
+          />
+          {!isCollapsed && (
+            <span className="ml-3 text-white">Search</span>
+          )}
+        </NavLink>
       </nav>
     </aside>
   );
