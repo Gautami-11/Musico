@@ -20,7 +20,7 @@ const Sidebar = ({ isCollapsed, toggleSidebar }) => {
 
   return (
     <aside
-      className={`fixed left-0 z-40 transition-all  duration-300 bg-gray-900 border-r-2 border-white`}
+      className={`fixed left-0 z-40 transition-all  duration-300 bg-gray-900 border-r-1 border-gray-400`}
       style={{
         top: "6rem",
         height: "calc(100vh - 4rem)",
