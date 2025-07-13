@@ -1,4 +1,5 @@
 
+
 import express from "express";
 import axios from "axios";
 import cors from "cors";
@@ -41,9 +42,6 @@ app.get("/api/search", async (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
-});
 
 // New Releases route
 app.get("/api/new-releases", async (req, res) => {
@@ -56,6 +54,28 @@ app.get("/api/new-releases", async (req, res) => {
   }
 });
 
+
+//playlist
+app.get("/api/playlist", async (req, res) => {
+  const { id } = req.query;
+  if (!id) {
+    return res.status(400).json({ error: "Missing playlist ID" });
+  }
+
+  try {
+    const response = await axios.get(`${BASE_URL}/playlists`, {
+      params: { id },
+    });
+    res.json(response.data);
+  } catch (error) {
+    console.error("Error fetching playlist:", error.response?.data || error.message);
+    res.status(500).json({ error: "Failed to fetch playlist" });
+  }
+});
+
+
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
 });
+
+

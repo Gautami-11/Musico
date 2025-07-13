@@ -4,9 +4,11 @@ import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Playlist from "./pages/Playlist";
 import Home from "./pages/Home";
-import FavouriteSongs from "./pages/FavoriteSongs";
-import AlbumDetails from "./pages/AlbumDetails";
+
+
 import Search from "./pages/Search";
+import PlayerControls from "./components/PlayerControls";
+
 
 import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
@@ -27,7 +29,7 @@ function App() {
       <Sidebar isCollapsed={isCollapsed} toggleSidebar={toggleSidebar} />
        <Navbar />
      
-      <div className="min-h-screen  text-gray-200 bg-gradient-to-b from-gray-800 via-emerald-800 to-black
+      <div className="min-h-screen  text-gray-200 bg-slate-950
 ">
         <main
           className="p-4"
@@ -39,11 +41,12 @@ function App() {
         >
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/favourite" element={<FavouriteSongs />} />
+           
             <Route path="/playlist" element={<Playlist />} />
-            <Route path="/album/:id" element={<AlbumDetails />} />
+           
                <Route path="/search" element={<Search />} />
           </Routes>
+          <PlayerControls /> 
         </main>
       </div>
     </BrowserRouter>
@@ -51,3 +54,4 @@ function App() {
 }
 
 export default App;
+

@@ -10,11 +10,7 @@ const Navbar = () => {
       <h1  className=" navbartext text-4xl text-amber-400 font-semibold">Musico</h1>
     </div>
 
- <div>
-      <button className="bg-gradient-to-l from-indigo-500 via-violet-500 to-pink-500  px-4 py-2 rounded hover:bg-gradient-to-r hover:from-indigo-500 hover:via-violet-500 hover:to-pink-500 text-xl text-white hover:text-emerald-200">
-        Login
-      </button>
-    </div> 
+ 
   </div>
 </nav>
 
